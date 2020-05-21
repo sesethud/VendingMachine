@@ -1,4 +1,4 @@
-package vending.product;
+package product;
 
 public class SoftDrink {
 
