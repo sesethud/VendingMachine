@@ -19,23 +19,29 @@ public class OverloadedVendingMachine {
 
 //    OverloadedVendingMachine overloadedVendingMachineObj=new OverloadedVendingMachine();
     public void buy(SoftDrink softdrink){
-        if(softdrink != null && softDrinkQty ==0){
-            softDrinkQty--;
-            return;
+        if(softDrinkQty>=0 ){
+            softDrinkQty=softDrinkQty-1;
+
+
+        }if(softDrinkQty<0){
+            softDrinkQty =0;
         }
 
     }
     public void buy(SaltySnack saltySnack){
-        if(saltySnack !=null && saltySnacksQty ==0){
-            saltySnacksQty --;
-            return;
-
+        if(saltySnacksQty >=0 ){
+            saltySnacksQty=saltySnacksQty-1;
+        }
+        if(saltySnacksQty<0){
+            saltySnacksQty=0;
         }
     }
     public void buy(Chocolate chocolate){
-        if (chocolate !=null && chocolatesQty ==0){
-            chocolatesQty -- ;
-            return;
+        if (chocolatesQty>=0 ){
+            chocolatesQty= chocolatesQty-1 ;
+        }
+        if(chocolatesQty<0){
+            chocolatesQty=0;
         }
     }
    /* public void buy(Product product) {
@@ -67,55 +73,64 @@ public class OverloadedVendingMachine {
         if (chocolate != null) {
             return chocolatesQty;
         }
+        else{
         return 0;
-    }
-        public int getStock (SoftDrink softdrink){
+    }}
+        public int getStock (SoftDrink softdrink) {
             if (softdrink != null) {
                 return softDrinkQty;
+            } else {
+                return 0;
             }
-            return 0;
         }
         public int getStock(SaltySnack saltySnack){
-            if (saltySnack != null) {
+            if (saltySnack != null ) {
                 return softDrinkQty;
-            }
+            }else{
             return 0;
         }
+    }
         public int getStock(Product product){
             if(product != null){
+
                 return softDrinkQty+chocolatesQty+saltySnacksQty;
             }
+            else{
             return 0;
         }
+    }
         public void buy(Product product){
-            int chocDiff;
-
-            String available="";
-
-
             if(product!=null){
                 System.out.println("How many chocolates to buy?");
                 Scanner chocolateScanner=new Scanner(System.in);
                 int theBuy=chocolateScanner.nextInt();
-                if(chocolatesQty>=theBuy) {
-                    chocolatesQty = -theBuy;
+                if(chocolatesQty>=theBuy && chocolatesQty>=0 ) {
+                    chocolatesQty = chocolatesQty-theBuy;
                     System.out.println(theBuy+" chocolates bought coming out...");
                 }
-
+                else{
+                    System.out.println("Buying more chocolate than in machine");
+                }
 
                 System.out.println("How many Soft Drinks to buy?");
                 Scanner softDrinkScanner=new Scanner(System.in);
                 int theBuy2=softDrinkScanner.nextInt();
-                if(softDrinkQty>=theBuy2){
-                    softDrinkQty=-theBuy2;
+                if(softDrinkQty>=theBuy2 && softDrinkQty>=0){
+                    softDrinkQty=softDrinkQty-theBuy2;
                     System.out.println("Softdrinks bought coming out...");
+                }
+                else{
+                    System.out.println("Buying more soft drink than in machine");
                 }
                 System.out.println("How many Salty snacks?");
                 Scanner saltySnackScanner=new Scanner(System.in);
                 int theBuy3=saltySnackScanner.nextInt();
-                if(saltySnacksQty>=theBuy3){
-                     saltySnacksQty=-theBuy3;
+                if(saltySnacksQty>=theBuy3 && saltySnacksQty>=0){
+                     saltySnacksQty=saltySnacksQty-theBuy3;
+                }else{
+                    System.out.println("Buying more salty scack than in machine");
                 }
+
             }
 
         }
